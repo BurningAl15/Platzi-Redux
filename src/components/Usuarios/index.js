@@ -1,33 +1,21 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { connect } from "react-redux";
+
+import * as usuariosActions from "../../actions/usuariosActions";
 
 //Stateless (componentes no funcionales)
 /*Diferencias
 No Funcionales no manejan estados, solo manejan información o funciones 
 const Usuarios =()=>{ }
 */
-
-export default class Usuarios extends Component {
-  constructor() {
-    super();
-    this.state = {
-      usuarios: []
-    };
-  }
-
-  async componentDidMount() {
-    const respuesta = await axios.get(
-      "https://jsonplaceholder.typicode.com/users"
-    );
-
-    this.setState({
-      usuarios: respuesta.data
-    });
+class Usuarios extends Component {
+  componentDidMount() {
+    this.props.traerTodos();
   }
 
   ponerFilas = () =>
     //Map itera por la cantidad de elementos del arreglo
-    this.state.usuarios.map(usuario => (
+    this.props.usuarios.map(usuario => (
       <tr key={usuario.id}>
         <td>{usuario.name}</td>
         <td>{usuario.email}</td>
@@ -37,18 +25,24 @@ export default class Usuarios extends Component {
 
   render() {
     return (
-      <div className="margen">
-        <table className="tabla">
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Correo</th>
-              <th>Enlace</th>
-            </tr>
-          </thead>
-          <tbody>{this.ponerFilas()}</tbody>
-        </table>
-      </div>
+      <table className="tabla">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Enlace</th>
+          </tr>
+        </thead>
+        <tbody>{this.ponerFilas()}</tbody>
+      </table>
     );
   }
 }
+
+const mapStateToProps = reducers => {
+  return reducers.usuariosReducer;
+};
+
+export default connect(mapStateToProps,usuariosActions
+  // {/*Actions*/}
+  )(Usuarios);
