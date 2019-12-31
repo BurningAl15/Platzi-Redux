@@ -1,0 +1,48 @@
+.margen {
+  margin: 100px;
+}
+
+.tabla {
+  width: 100%;
+  text-align: left;
+}
+
+.tabla td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#menu {
+  background-color: #253a46;
+  padding: 20px;
+  font-size: 20px;
+}
+
+#menu a {
+  color: white;
+  padding-right: 50px;
+}
+
+body {
+  margin: 0;
+}
+
+.center {
+  text-align: center;
+}
+
+.red {
+  font-size: 40px;
+  background: -webkit-linear-gradient(
+    -90deg,
+    rgb(156, 75, 202) 0%,
+    rgb(223, 77, 77) 75%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* color:rgb(223, 77, 77); */
+  /* color:linear-gradient(left,yellow,rgb(223, 77, 77)); */
+}
+/* .margen .lds-ellipsis {
+  text-align: center;
+} */
