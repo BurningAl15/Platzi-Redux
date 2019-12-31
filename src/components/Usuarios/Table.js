@@ -1,15 +1,23 @@
 import React from "react";
 
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+
+import Icono from "../icono";
 
 const Table = props => {
   //Map itera por la cantidad de elementos del arreglo
   const ponerFilas = () =>
-    props.usuarios.map(usuario => (
+    props.usuarios.map((usuario, key) => (
       <tr key={usuario.id}>
         <td> {usuario.name} </td>
         <td> {usuario.email} </td>
         <td> {usuario.website} </td>
+        <td>
+          <Link to={ `/publicaciones/${key}` }>
+            <Icono />
+          </Link>
+        </td>
       </tr>
     ));
 
@@ -22,9 +30,7 @@ const Table = props => {
           <th> Enlace </th>{" "}
         </tr>
       </thead>
-      <tbody>
-        {ponerFilas()}
-      </tbody>
+      <tbody>{ponerFilas()}</tbody>
     </table>
   );
 };
