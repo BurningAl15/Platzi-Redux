@@ -46,3 +46,7 @@ body {
 /* .margen .lds-ellipsis {
   text-align: center;
 } */
+
+.pub_titulo{
+  border-top:1px solid black;
+}
